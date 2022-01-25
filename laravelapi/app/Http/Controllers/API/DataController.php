@@ -10,11 +10,10 @@ class DataController extends Controller
 {
     public function str(Request $r) {
         $data = new Data;
-        dd($data);
         $data->name = $r->input('name');
         $data->email = $r->input('email');
         $data->phone = $r->input('phone');
-        $data->email = $r->input('email');
+        $data->address = $r->input('address');
         $data->age = $r->input('age');
         $data->save();
 
@@ -23,5 +22,9 @@ class DataController extends Controller
             'message'=> 'Data Added'
         ]);
 
+        console.log("asche");
+    }
+    public function show(Request $request)  {
+        dd("String");
     }
 }

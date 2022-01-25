@@ -10,6 +10,6 @@ class Data extends Model
     use HasFactory;
     protected $table = 'datas';
     protected $fillable = [
-        'name','course','email','phone','age'
+        'name','email','phone','address','age'
     ];
 }

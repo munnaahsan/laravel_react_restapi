@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, {Component} from 'react';
+import axios from "axios";
+
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 class DevdataList extends Component{
@@ -18,10 +19,33 @@ class DevdataList extends Component{
         });
     }
 
+
+    // saveData(e)
+    // {
+    //     e.preventDefault();
+    //     window.axios({
+    //         method: 'post',
+    //         url: 'http://localhost:8000/api/add-data',
+    //         data: {name: this.state.name, phone: this.state.phone,course: this.state.course, address: this.state.address, email: this.state.email, age: this.state.age},
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data'
+    //         }
+    //     })
+    //         .then(function (response) {
+    //             console.log(response);
+    //         })
+    //         .catch(function (response) {
+    //             console.log(response);
+    //         });
+    // }
+
     saveData = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:8000/api/add-data', this.state);
-        alert("something");
+        const res = await axios.post('http://127.0.0.1:8000/api/add-data', this.state, {
+            headers: { "Content-Type": "aplication/json" },
+        });
+
+       console.log(this.state);
         if(res.data.status === 200) {
             console.log(res.data.message);
             this.setState({
@@ -36,6 +60,7 @@ class DevdataList extends Component{
     }
 
     render() {
+
         return(
             <div className="container">
                 <div className="row">

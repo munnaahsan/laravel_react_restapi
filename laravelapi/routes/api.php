@@ -16,6 +16,7 @@ use App\Http\Controllers\API\DataController;
 */
 
 Route::post('/add-data', [DataController::class, 'str']);
+Route::get('/show', [DataController::class, 'show']);
 
 
 
