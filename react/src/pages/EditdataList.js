@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-class DevdataList extends Component{
+class EditdataList extends Component{
     state = {
         name: '',
         phone: '',
@@ -17,26 +17,19 @@ class DevdataList extends Component{
             [e.target.name]: e.target.value
         });
     }
-
-    saveData = async (e) => {
+    updateData = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://127.0.0.1:8000/api/add-data', this.state, {
-            headers: { "Content-Type": "aplication/json" },
-        });
 
-       console.log(this.state);
-        if(res.data.status === 200) {
-            console.log(res.data.message);
-            this.setState({
-                name: '',
-                phone: '',
-                course: '',
-                address: '',
-                email: '',
-                age: ''
-            });
-        }
     }
+
+    async componentDidMount(){
+        const res = this.props;
+        console.log(res);
+
+    }
+
+
+
 
     render() {
 
@@ -45,10 +38,12 @@ class DevdataList extends Component{
                 <div className="row">
                     <div className="col-md-6">
                         <div className="card-header">
-                            <h3>Data</h3>
+                            <button>
+                                <Link to="/" className="btn btn-info">Back</Link>
+                            </button>
                         </div>
                         <div className="card-body">
-                            <form onSubmit={this.saveData}>
+                            <form onSubmit={this.updateData}>
                                 <div className="form-group mb-3">
                                     <label>Name</label>
                                     <input type="text"
@@ -106,7 +101,7 @@ class DevdataList extends Component{
                                 </div>
                                 <div className="form-group mb-3">
                                     <button type="submit"
-                                           className="btn btn-primary float-end"
+                                            className="btn btn-primary float-end"
                                     >
                                         Save
                                     </button>
@@ -120,4 +115,4 @@ class DevdataList extends Component{
     }
 }
 
-export default DevdataList;
+export default EditdataList;
