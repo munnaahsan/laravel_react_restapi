@@ -19,26 +19,6 @@ class DevdataList extends Component{
         });
     }
 
-
-    // saveData(e)
-    // {
-    //     e.preventDefault();
-    //     window.axios({
-    //         method: 'post',
-    //         url: 'http://localhost:8000/api/add-data',
-    //         data: {name: this.state.name, phone: this.state.phone,course: this.state.course, address: this.state.address, email: this.state.email, age: this.state.age},
-    //         headers: {
-    //             'Content-Type': 'multipart/form-data'
-    //         }
-    //     })
-    //         .then(function (response) {
-    //             console.log(response);
-    //         })
-    //         .catch(function (response) {
-    //             console.log(response);
-    //         });
-    // }
-
     saveData = async (e) => {
         e.preventDefault();
         const res = await axios.post('http://127.0.0.1:8000/api/add-data', this.state, {
@@ -66,10 +46,9 @@ class DevdataList extends Component{
                 <div className="row">
                     <div className="col-md-6">
                         <div className="card-header">
-                            <h3>Data
-                            </h3>
+                            <h3>Data</h3>
                         </div>
-                        <div className="card-body mb-3">
+                        <div className="card-body">
                             <form onSubmit={this.saveData}>
                                 <div className="form-group mb-3">
                                     <label>Name</label>

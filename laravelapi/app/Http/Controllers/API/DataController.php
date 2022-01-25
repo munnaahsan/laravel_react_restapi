@@ -22,9 +22,12 @@ class DataController extends Controller
             'message'=> 'Data Added'
         ]);
 
-        console.log("asche");
     }
-    public function show(Request $request)  {
-        dd("String");
+    public function index(Request $request)  {
+       $datas = Data::all();
+       return response()->json([
+            'status' => 200,
+            'datas' => $datas,
+       ]);
     }
 }
