@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import axios from "axios";
 import {Link} from 'react-router-dom'
 
 class EditdataList extends Component{
+
     state = {
         name: '',
         phone: '',
@@ -19,20 +19,23 @@ class EditdataList extends Component{
     }
     updateData = async (e) => {
         e.preventDefault();
-
     }
 
-    async componentDidMount(){
-        const res = this.props;
-        console.log(res);
+    // async componentDidMount(){
+    //     const res = this.props;
+    //     console.log(res);
+    // }
 
+     componentDidMount() {
+        let id = this.props;
+
+        console.log(id);
+        // const id = this.props.match.params.kkk;
+        // console.log(id);
     }
-
-
-
 
     render() {
-
+        // const {id} = useParams();
         return(
             <div className="container">
                 <div className="row">
@@ -42,6 +45,7 @@ class EditdataList extends Component{
                                 <Link to="/" className="btn btn-info">Back</Link>
                             </button>
                         </div>
+
                         <div className="card-body">
                             <form onSubmit={this.updateData}>
                                 <div className="form-group mb-3">
@@ -108,6 +112,7 @@ class EditdataList extends Component{
                                 </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>

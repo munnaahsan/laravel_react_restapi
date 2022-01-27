@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Link, useParams,NavLink} from 'react-router-dom'
 import axios from "axios";
 
 
@@ -21,23 +21,22 @@ class Devdata extends Component {
       }
    }
 
-
     render() {
        var dataHtmlTable = "";
+
        if(this.state.loading) {
            dataHtmlTable =<tr><td colSpan="7"><h2>Loading</h2></td></tr>;
        } else {
            dataHtmlTable = this.state.datas.map((item) => {
                return(
                    <tr key={item.id}>
-                       <td>{item.id}</td>
                        <td>{item.name}</td>
                        <td>{item.email}</td>
                        <td>{item.phone}</td>
                        <td>{item.address}</td>
                        <td>{item.age}</td>
                        <td>
-                           <Link to={`edit-data/${item.id}`} className="btn btn-success btn-sm">Edit</Link>
+                           <Link to={`/edit-data/${item.id}`} className="btn btn-success btn-sm">Edit</Link>
                        </td>
                        <td>
                           <button type="button" className="btn btn-danger btn-sm">Delete</button>
@@ -62,7 +61,6 @@ class Devdata extends Component {
                             <table className="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
